@@ -7,12 +7,13 @@ export default function App() {
   const handleButtonClick = async () => {
     const overlayTriggerElement = document.getElementById("overlay-trigger");
     const overlayContentElement = document.getElementById("popover-content");
+    !customElements.get("sp-overlay") && customElements.define("sp-overlay", Overlay);
     await Overlay.open(
       overlayTriggerElement!,
       "click",
       overlayContentElement!,
       {
-        placement: "bottom-start"
+        placement: "bottom-start",
       }
     );
   };
